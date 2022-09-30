@@ -10,7 +10,9 @@ import java.util.Objects;
 public class MyConnectorRequest {
 
   @NotEmpty
-  private String message;
+  private String latitude;
+  private String longitude;
+  private String units;
 
   @Valid
   @NotNull

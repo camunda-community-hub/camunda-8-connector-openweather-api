@@ -5,14 +5,14 @@ import java.util.Objects;
 public class MyConnectorResult {
 
   // TODO: define connector result properties, which are returned to the process engine
-  private String myProperty;
+  private String result;
 
-  public String getMyProperty() {
-    return myProperty;
+  public String getResult() {
+    return result;
   }
 
-  public void setMyProperty(String myProperty) {
-    this.myProperty = myProperty;
+  public void setResult(String results) {
+    this.result = results;
   }
 
   @Override
@@ -24,17 +24,17 @@ public class MyConnectorResult {
       return false;
     }
     final MyConnectorResult that = (MyConnectorResult) o;
-    return Objects.equals(myProperty, that.myProperty);
+    return Objects.equals(result, that.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(myProperty);
+    return Objects.hash(result);
   }
 
   @Override
   public String toString() {
-    return "MyConnectorResult [myProperty=" + myProperty + "]";
+    return "MyConnectorResult [result=" + result + "]";
   }
 
 }

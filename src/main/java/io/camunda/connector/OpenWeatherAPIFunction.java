@@ -5,9 +5,9 @@ import io.camunda.connector.api.outbound.OutboundConnectorFunction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MyConnectorFunction implements OutboundConnectorFunction {
+public class OpenWeatherAPICall implements OutboundConnectorFunction {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(MyConnectorFunction.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(OpenWeatherAPICall.class);
 
   @Override
   public Object execute(OutboundConnectorContext context) throws Exception {
