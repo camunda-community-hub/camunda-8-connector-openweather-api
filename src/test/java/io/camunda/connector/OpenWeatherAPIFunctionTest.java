@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import io.camunda.connector.test.outbound.OutboundConnectorContextBuilder;
 import org.junit.jupiter.api.Test;
 
-public class MyFunctionTest {
+public class OpenWeatherAPIFunctionTest {
 
   @Test
   void shouldReturnUnauthorizedMessageWhenExecuteWithoutSecret() throws Exception {

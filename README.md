@@ -5,7 +5,7 @@
 > * [README](./README.md) (title, description)
 > * [Element Template](./element-templates/template-connector.json)
 > * [POM](./pom.xml) (artifact name, id, description)
-> * [Connector Function](./src/main/java/io/camunda/connector/MyConnectorFunction.java) (rename, implement)
+> * [Connector Function](./src/main/java/io/camunda/connector/OpenWeatherAPIRequest.java) (rename, implement)
 > * [Service Provider Interface (SPI)](./src/main/resources/META-INF/services/io.camunda.connector.api.ConnectorFunction#L1) (rename)
 >
 > ...and delete this hint.

@@ -2,10 +2,14 @@ package io.camunda.connector;
 
 import java.util.Objects;
 
-public class MyConnectorResult {
+public class OpenWeatherAPIResult {
 
-  // TODO: define connector result properties, which are returned to the process engine
   private String result;
+  private int code;
+
+  public void setCode(int code) { this.code = code; }
+
+  public int getCode() { return this.code; }
 
   public String getResult() {
     return result;
@@ -23,7 +27,7 @@ public class MyConnectorResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    final MyConnectorResult that = (MyConnectorResult) o;
+    final OpenWeatherAPIResult that = (OpenWeatherAPIResult) o;
     return Objects.equals(result, that.result);
   }
 
@@ -34,7 +38,7 @@ public class MyConnectorResult {
 
   @Override
   public String toString() {
-    return "MyConnectorResult [result=" + result + "]";
+    return "OpenWeatherAPIResult [result=" + result + "]";
   }
 
 }

@@ -1,43 +1,40 @@
 package io.camunda.connector;
 
 import io.camunda.connector.api.annotation.Secret;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
-public class MyConnectorRequest {
+public class OpenWeatherAPIRequest {
 
-  @NotEmpty
   private String latitude;
   private String longitude;
   private String units;
-
-  @Valid
-  @NotNull
   @Secret
-  private Authentication authentication;
+  private String apiKey;
 
-  public String getMessage() {
-    return message;
+  public String getLatitude() {
+    return latitude;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setLatitude(String latitude) {
+    this.latitude = latitude;
   }
 
-  public Authentication getAuthentication() {
-    return authentication;
-  }
+  public String getLongitude() { return longitude; }
 
-  public void setAuthentication(Authentication authentication) {
-    this.authentication = authentication;
-  }
+  public void setLongitude(String longitude) { this.longitude = longitude; }
+
+  public String getUnits() { return units; }
+
+  public void setUnits(String units) { this.units = units; }
+
+  public String getApiKey() { return apiKey; }
+
+  public void setApiKey(String apiKey) { this.apiKey = apiKey; }
 
   @Override
   public int hashCode() {
-    return Objects.hash(authentication, message);
+    return Objects.hash(latitude, longitude, units, apiKey);
   }
 
   @Override
@@ -45,13 +42,15 @@ public class MyConnectorRequest {
     if (this == obj) return true;
     if (obj == null) return false;
     if (getClass() != obj.getClass()) return false;
-    MyConnectorRequest other = (MyConnectorRequest) obj;
-    return Objects.equals(authentication, other.authentication)
-        && Objects.equals(message, other.message);
+    OpenWeatherAPIRequest other = (OpenWeatherAPIRequest) obj;
+    return Objects.equals(latitude, other.latitude)
+        && Objects.equals(longitude, other.longitude)
+        && Objects.equals(units, other.units)
+        && Objects.equals(apiKey, other.apiKey);
   }
 
   @Override
   public String toString() {
-    return "MyConnectorRequest [message=" + message + ", authentication=" + authentication + "]";
+    return "OpenWeatherAPIRequest [latitude=" + latitude + ", longitude=" + longitude + ", units=" + units + ", openweatherapikey=" + apiKey + "]";
   }
 }
