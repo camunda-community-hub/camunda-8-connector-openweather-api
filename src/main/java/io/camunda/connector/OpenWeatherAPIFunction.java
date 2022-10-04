@@ -1,5 +1,6 @@
 package io.camunda.connector;
 
+import io.camunda.connector.api.annotation.OutboundConnector;
 import io.camunda.connector.api.outbound.OutboundConnectorContext;
 import io.camunda.connector.api.outbound.OutboundConnectorFunction;
 import org.slf4j.Logger;
@@ -13,6 +14,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+@OutboundConnector(
+        name = "OpenWeatherAPI", inputVariables = {"latitude", "longitude", "units"}, type = "io.camunda:weather-api:1")
 public class OpenWeatherAPIFunction implements OutboundConnectorFunction {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(OpenWeatherAPIFunction.class);
