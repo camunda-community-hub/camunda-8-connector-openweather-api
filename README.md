@@ -1,19 +1,6 @@
-> A template for new C8 connectors.
->
-> To use this template update the following resources to match the name of your connector:
->
-> * [README](./README.md) (title, description)
-> * [Element Template](./element-templates/template-connector.json)
-> * [POM](./pom.xml) (artifact name, id, description)
-> * [Connector Function](./src/main/java/io/camunda/connector/OpenWeatherAPIRequest.java) (rename, implement)
-> * [Service Provider Interface (SPI)](./src/main/resources/META-INF/services/io.camunda.connector.api.ConnectorFunction#L1) (rename)
->
-> ...and delete this hint.
+# OpenWeather API Camunda 8 Connector
 
-
-# Connector Template
-
-Camunda Connector Template
+A Camunda 8 Connector to retrieve data from the OpenWeather API.
 
 ## Build
 
@@ -27,8 +14,10 @@ mvn clean package
 
 ```json
 {
-  "token": ".....",
-  "message": "....."
+  "latitude": ".....",
+  "longitude": ".....",
+  "units": "....",
+  "apiKey":"...."
 }
 ```
 
@@ -36,8 +25,9 @@ mvn clean package
 
 ```json
 {
-  "result": {
-    "myProperty": "....."
+  "weather": {
+    "forecast": "....",
+    "code": "...."
   }
 }
 ```
