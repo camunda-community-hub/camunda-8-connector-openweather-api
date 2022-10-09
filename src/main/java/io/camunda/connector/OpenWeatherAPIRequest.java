@@ -51,6 +51,6 @@ public class OpenWeatherAPIRequest {
 
   @Override
   public String toString() {
-    return "OpenWeatherAPIRequest [latitude=" + latitude + ", longitude=" + longitude + ", units=" + units + ", openweatherapikey=" + apiKey + "]";
+    return "OpenWeatherAPIRequest [latitude=" + latitude + ", longitude=" + longitude + ", units=" + units + ", apiKey=" + apiKey + "]";
   }
 }

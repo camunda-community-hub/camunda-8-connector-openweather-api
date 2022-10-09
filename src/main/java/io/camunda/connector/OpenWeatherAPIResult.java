@@ -4,19 +4,19 @@ import java.util.Objects;
 
 public class OpenWeatherAPIResult {
 
-  private String result;
+  private String forecast;
   private int code;
 
   public void setCode(int code) { this.code = code; }
 
   public int getCode() { return this.code; }
 
-  public String getResult() {
-    return result;
+  public String getForecast() {
+    return forecast;
   }
 
-  public void setResult(String results) {
-    this.result = results;
+  public void setForecast(String forecast) {
+    this.forecast = forecast;
   }
 
   @Override
@@ -28,17 +28,16 @@ public class OpenWeatherAPIResult {
       return false;
     }
     final OpenWeatherAPIResult that = (OpenWeatherAPIResult) o;
-    return Objects.equals(result, that.result);
+    return Objects.equals(forecast, that.forecast);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result);
+    return Objects.hash(forecast);
   }
 
   @Override
   public String toString() {
-    return "OpenWeatherAPIResult [result=" + result + "]";
+    return "OpenWeatherAPIResult [forecast=" + forecast + " code=" + code + "]";
   }
-
 }

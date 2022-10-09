@@ -15,7 +15,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 @OutboundConnector(
-        name = "OpenWeatherAPI", inputVariables = {"latitude", "longitude", "units"}, type = "io.camunda:weather-api:1")
+        name = "OpenWeatherAPI", inputVariables = {"latitude", "longitude", "units", "apiKey"}, type = "io.camunda:weather-api:1")
 public class OpenWeatherAPIFunction implements OutboundConnectorFunction {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(OpenWeatherAPIFunction.class);
@@ -23,12 +23,12 @@ public class OpenWeatherAPIFunction implements OutboundConnectorFunction {
   @Override
   public Object execute(OutboundConnectorContext context) throws Exception {
     var connectorRequest = context.getVariablesAsType(OpenWeatherAPIRequest.class);
+    LOGGER.info("Pre-secret replacement 2: " + connectorRequest.toString());
     context.replaceSecrets(connectorRequest);
-    return executeConnector(connectorRequest);
+      return executeConnector(connectorRequest);
   }
 
   private OpenWeatherAPIResult executeConnector(final OpenWeatherAPIRequest connectorRequest) throws IOException {
-    // TODO: implement connector logic
     LOGGER.info("Executing OpenWeather API connector with request {}", connectorRequest);
     String urlString = "\n" +
             "https://api.openweathermap.org/data/2.5/weather?appid=" + connectorRequest.getApiKey() +
@@ -42,12 +42,14 @@ public class OpenWeatherAPIFunction implements OutboundConnectorFunction {
     String weatherReport;
     if (http.getResponseCode() == 200) {
       weatherReport= convertInputStreamToString(http.getInputStream());
+      LOGGER.info("Weather report" + weatherReport);
     } else {
-      weatherReport = "{}";
+        LOGGER.error("Error accessing OpenWeather API: " + http.getResponseCode() + " - " + http.getResponseMessage());
+        weatherReport = "{}";
     }
 
     var result = new OpenWeatherAPIResult();
-    result.setResult("{\"code\": " + http.getResponseCode() + ", \"forecast\": " + weatherReport + "}");
+    result.setForecast(weatherReport);
     result.setCode(http.getResponseCode());
     return result;
   }
