@@ -23,13 +23,12 @@ public class OpenWeatherAPIFunction implements OutboundConnectorFunction {
   @Override
   public Object execute(OutboundConnectorContext context) throws Exception {
     var connectorRequest = context.getVariablesAsType(OpenWeatherAPIRequest.class);
-    LOGGER.info("Pre-secret replacement 2: " + connectorRequest.toString());
+    LOGGER.info("Pre-secret replacement: " + connectorRequest.toString());
     context.replaceSecrets(connectorRequest);
       return executeConnector(connectorRequest);
   }
 
   private OpenWeatherAPIResult executeConnector(final OpenWeatherAPIRequest connectorRequest) throws IOException {
-    LOGGER.info("Executing OpenWeather API connector with request {}", connectorRequest);
     String urlString = "\n" +
             "https://api.openweathermap.org/data/2.5/weather?appid=" + connectorRequest.getApiKey() +
             "&lat=" + connectorRequest.getLatitude() + "&lon=" + connectorRequest.getLongitude();
