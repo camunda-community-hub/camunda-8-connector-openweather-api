@@ -44,7 +44,8 @@ public class OpenWeatherAPIFunction implements OutboundConnectorFunction {
       LOGGER.info("Weather report" + weatherReport);
     } else {
         LOGGER.error("Error accessing OpenWeather API: " + http.getResponseCode() + " - " + http.getResponseMessage());
-        weatherReport = "{}";
+        // Throwing an exception will fail the job
+        throw new IOException(http.getResponseMessage());
     }
 
     var result = new OpenWeatherAPIResult();
