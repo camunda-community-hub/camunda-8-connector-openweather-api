@@ -48,4 +48,4 @@ Use the [Camunda Job Worker Connector Run-Time](https://github.com/camunda/conne
 
 ## Element Template
 
-The element templates can be found in the [element-templates/template-connector.json](element-templates/template-connector.json) file.
+The element template can be found in the [element-templates/template-connector.json](element-templates/template-connector.json) file.

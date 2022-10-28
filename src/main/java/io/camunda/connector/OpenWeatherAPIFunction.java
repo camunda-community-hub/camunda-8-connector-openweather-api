@@ -29,9 +29,8 @@ public class OpenWeatherAPIFunction implements OutboundConnectorFunction {
   }
 
   private OpenWeatherAPIResult executeConnector(final OpenWeatherAPIRequest connectorRequest) throws IOException {
-    String urlString = "\n" +
-            "https://api.openweathermap.org/data/2.5/weather?appid=" + connectorRequest.getApiKey() +
-            "&lat=" + connectorRequest.getLatitude() + "&lon=" + connectorRequest.getLongitude();
+    String urlString = "https://api.openweathermap.org/data/2.5/weather?appid=" + connectorRequest.getApiKey() +
+            "&lat=" + connectorRequest.getLatitude() + "&lon=" + connectorRequest.getLongitude()+"&units=" + connectorRequest.getUnits();
     URL url = new URL(urlString);
     HttpURLConnection http = (HttpURLConnection)url.openConnection();
     http.setRequestProperty("Accept", "application/json");
